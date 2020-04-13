@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from utid.ut.ac.ir/user/login?url=/user/pass/update by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 28 Mar 2020 17:18:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head lang="en">
+
+        <link rel="shortcut icon" href="https://utid.ut.ac.ir/favicon.ico" >
+    <link rel="icon" type="image/gif" href="../animated_favicon1.gif" >
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-Frame-Options" content="deny"> -->
+    <link rel="stylesheet" href="../css/ml.css"/>
+    <link rel="stylesheet" href="../css/style.min.css"/>
+    <link rel="stylesheet" href="../css/passwordscheck.css"/>
+        <link rel="stylesheet" href="../css/rtl.min.css"/>
+<!--<link rel="stylesheet" href="css/bootstrap.min.css"/>-->
+    <script src="../js/jq3.js"></script>
+    <script src="../js/jquery.js"></script>
+    <!-- <script type="application/javascript">
+         alert("error message goes here.");
+
+         if (window.addEventListener) {
+         }
+         else{
+             window.alert("ازمروگر‌های بروز استفاده نمایید.");
+         }
+     </script>-->
+
+    <script src="../js/main.min.js"></script>
+    <title>Tehran University Registeration - سامانه پروفایل کاربری|صفحه ورود</title>
+    <script src="../js/in.js"></script>
+<!-- <script src="https://utid.ut.ac.ir/js/forms.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="jquery.chained.js"></script> -->
+
+
+    <script type="application/javascript">
+        //        function InvalidMsg(textbox) {  oninvalid="InvalidMsg(this); "
+        //            if (textbox.value == '') {
+        //                textbox.setCustomValidity("لطفا این قسمت را پر کنید");
+        //            }
+        //            else
+        //            {
+        //                textbox.setCustomValidity("");
+        //
+        //                //  closeValidation(textbox);
+        //            }
+        //            //}
+        //        }
+
+
+        function checkIe() {
+            var isIE = /*@cc_on!@*/false || !!document.documentMode;
+            return isIE;
+        }
+
+
+        function chkIeVer() {
+
+            var version = detectIE();
+            //alert(version);
+            if (version < 9) {
+                alert(
+                    "کاربر گرامی، این سایت از مرورگر اینترنت اکسپلورر نسخه ۹ به بالا پشتیبانی می‌نماید. لطفا با نسخه بروز شده، یا مرورگر دیگری مجدد تلاش نمایید." +
+                    ""
+                );
+            }
+            // add details to debug result
+            //  document.getElementById('details').innerHTML = window.navigator.userAgent;
+        }
+        function detectIE() {
+            var ua = window.navigator.userAgent;
+
+            var msie = ua.indexOf('MSIE ');
+            if (msie > 0) {
+                // IE 10 or older => return version number
+                return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+            }
+
+            var trident = ua.indexOf('Trident/index.html');
+            if (trident > 0) {
+                // IE 11 => return version number
+                var rv = ua.indexOf('rv:');
+                return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+            }
+
+            var edge = ua.indexOf('Edge/index.html');
+            if (edge > 0) {
+                // Edge (IE 12+) => return version number
+                return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+            }
+
+        }
+
+
+
+        //    function rmMsg(textbox) {
+        //        // alert("Onachange");
+        //         if (textbox.value != '') {
+        //            alert("has-error");
+        //   textbox.setCustomValidity("لطفا این قسمت را پر کنید");
+
+        //             $(textbox).removeClass('has-error');          //      alert('textbox.setCustomValidity("")');
+        //             textbox.css({'background-color' : '#FF0000'});
+        //         }
+        //         else
+        //        {
+        //            alert("has-not-error");
+
+        //             $(textbox).addClass('has-error');
+        //  closeValidation(textbox);
+        //        }
+
+        //    }
+
+
+        $(document).ready(function () {
+
+
+            var res = checkIe();
+            var ver = 8;
+            if (res) {
+                // alert("UsingIE");
+                ver = detectIE();
+                // alert("UsingIE ver: "+ver);
+                if (ver > 8) {   //        alert(ver);
+                    $('#IEalert').hide();
+                }
+                else {
+                    alert("کاربر گرامی، این سایت از مرورگر اینترنت اکسپلورر نسخه ۹ به بالا پشتیبانی می‌نماید. لطفا با نسخه بروز شده، یا مرورگر دیگری مجدد تلاش نمایید."
+                    );
+                }
+            } else {
+                $('#IEalert').hide();
+            }
+
+            initPage();
+
+
+            //$('.school').hide();
+            //$('.major').hide();
+
+            $('#idcard').on('change', function () {
+                readURL(this,"#blah");
+                //	alert('salam');
+                $('.fileAlert').hide();
+                if (document.getElementById("idcard").files.length == 0) {
+                    $('.fileAlert').show();
+
+                }
+
+            });
+
+            $('#Photo-id').on('change', function () {
+                readURL(this,"#Photo-priv");
+                //	alert('salam');
+                $('.fileAlert').hide();
+                if (document.getElementById("idcard").files.length == 0) {
+                    $('.fileAlert').show();
+
+                }
+
+            });
+
+
+            //   $("form").each(function(){//, textarea, select
+            //      $(this, "input");
+            //  });
+            //Iranian-Data
+            // $('.Iranian-Data').show();
+            // $('.Foreign-Data').hide();
+
+            $('#nationality-id').on('change', function () {
+                if ($(this).val() == 'ایرانی') {
+                    $('.ssn').show();
+
+                    //   $('.Iranian-Data').show();
+                    //   $('.Foreign-Data').hide();
+                } else {
+                    $('.ssn').hide();
+
+                    //    $('.Iranian-Data').hide();
+                    //   $('.Foreign-Data').show();
+                }
+            });
+
+
+
+
+            $('#college-id').on('change', function () {
+                //   alert('change');
+
+                $('.school').hide();
+                $('.major').hide();
+
+                //    console.log(hided);
+                $('.col' + $(this).val()).show();
+            });
+
+            //console.log($('#subject-id').val());
+            // console.log($('#subject-id').val());
+            if ($('#subject-id').val() != 'forget') {
+                $('.sanjeshAlert').hide()
+            }
+
+
+
+            $('#subject-id').on('change', function () {
+                //alert('change');
+
+                if ($(this).val() == 'forget') {
+                    //$("#code-id").attr('disabled','disabled');
+                    $("#code-id").attr('placeholder', 'می‌تواند پر نشود');
+                    $('.sanjeshAlert').show();
+
+
+                }
+                else {
+                    //	$("#code-id").removeAttr('disabled');
+                    $("#code-id").attr('placeholder', 'نمونه:56983');
+                    $('.sanjeshAlert').hide();
+                }
+                //    console.log(hided);
+
+            });
+
+
+        });
+
+
+    </script>
+
+</head>
+<body>
+<header class="main-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="logo col-md-3">
+
+                                <a href="http://ut.ac.ir/"><img src="../images/sitenameNewBig.png" class="img-responsive" alt="alt text"></a>
+                
+            </div>
+
+
+
+
+        <!--   <div class="logo col-md-2" align="right">
+			ازمرور‌گر‌های بروز استفاده نمایید. نسخه‌ّ‌ّ‌های قدیمی
+                <a href="http://ut.ac.ir"><img src="https://utid.ut.ac.ir/images/browser.png" class="img-responsive"
+                                               alt="alt text"></a>
+            </div>
+           <div class="col-md-4">
+                 <h1 class="text-center text-info col-md-offset-1">سامانه مدیریت شناسه یکتا</h1>
+             </div>-->
+            <div class="col-md-10" id='IEalert'>
+                <h1 class="text-center text-info col-md-offset-1">از مرور‌گر‌های بروز استفاده نمایید. اینترنت اکسپلورر ۹
+                    و قدیمی‌تر درست کار نمی‌کنند</h1>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-default" align="center">
+        <!--div class="container-fluid col-md-offset-3"-->
+        <div class="container-fluid col-md-offset-2">
+
+            <table style="width:98%" align="center">
+                <td>
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="https://utid.ut.ac.ir/"><font color="green"> صفحه اصلی    </font></a>
+                        </li>
+                        <li>
+                            <a href="https://utid.ut.ac.ir/register"><font color="green">  دریافت شناسه یکتا   </font></a>
+                        </li>
+
+                    <!--- <li>
+                    <a href="https://utid.ut.ac.ir/recover<"span class="text-danger">فراموشی شناسه یکتا</span></a>
+                </li> --->
+
+
+                        <li>
+                            <a href="loginf5b0.html"><font color="green"> تغییر گذرواژه   </font></a>
+                        </li>
+
+                    <!--	<li>
+                        <a href="https://utid.ut.ac.ir/register"><span class="text-danger">بازیابی نام‌کاربری</span></a>
+                    </li>  -->
+
+
+                        <li>
+                            <a href="pass/recover.html"><font color="green">فراموشی گذرواژه   </font></a>
+                        </li>
+                        <li>
+                            <a href="https://utid.ut.ac.ir/Fida/fidaRoute"><font color="green">کد فراگیر  اتباع غیرایرانی</font></a>
+                        </li>
+                        <li>
+                            <a href="http://ithelp.ut.ac.ir/fa/news/3097/"><font color="green"><span>راهنما   </span></font></a>
+                        </li>
+                        <li>
+                        </li>
+                        <li>
+
+
+                        </li>
+                        <li>
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <div class="col-md-3" align="right">
+
+                    </div>
+                </td>
+
+                <td>
+                                            <div class="" align="right">
+                            <a href="profile.html"> <font color="green"><span> (شناسه من) </span></font></a>
+
+
+
+                        </div>
+                    </div>
+                    
+                </td>
+                <td>
+                                        <div class="col-md-1" align="left">
+                        <a href="https://utid.ut.ac.ir/setting/en"><font color="green">English</font></a>
+                    </div>
+                    
+                </td>
+
+            </table>
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+    </nav>
+
+</header>
+
+<section class="media-body">
+            <!-- Main page container -->
+        <section class="container login" role="main">
+<div class="container">
+        <div class="col-sm-12 col-md-12 ">
+            <h1 class="text-center login-title">ورود به سامانه </h1>
+            <div class="account-wall">
+
+                <form method="post" class="form-signin" action="https://utid.ut.ac.ir/user/login?url=/user/pass/update" >
+                                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label" for="login">شناسه یکتا</label>
+                            <span class="text text-warning">(نام کاربری)</span>
+                            <input id="icon" type="text" class="form-control text-left" placeholder="" name="user" required autofocus>
+
+                        </div>
+                        <div class="control-group">
+						</br>
+                            <label class="control-label" for="password">گذرواژه</label>
+                                <input id="password" type="password" placeholder="" class="form-control text-left" name="password" required>
+                                <!--label class="checkbox col-md-offset-1">
+                                <   <input id="optionsCheckbox" class="" type="checkbox" value="option1"> مرا بخاطر بسپار
+                                </label> -->
+                        </div>
+                            <label>عبارت امنیتی را وارد کنید</label>
+                        <span class="text text-warning">(به حروف کوچک و بزرگ حساس نیست)</span>
+                        <div class="form-group row">
+                            <img id="mycaptcha" class="col-md-offset-1" src="https://utid.ut.ac.ir/captcha?774336">
+                            <button type="button" class="btn btn-default" onclick="refresh('https://utid.ut.ac.ir/captcha-img')" style="margin-left: 5px">
+                                <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <input type="text" class="form-control text-left btn-block" name="user-captcha"><br>
+                                <button class="btn btn-lg btn-success" type="submit"><span class=""></span>ادامه</button>
+                        <br/>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</section>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 copyright-container" style="direction: ltr; color: white;">
+                &copy;کلیه حقوق متعلق به دانشگاه تهران می‌باشد. ۱۳۹۷            </div>
+        </div>
+    </div>
+</footer>
+</body>
+
+<!-- Mirrored from utid.ut.ac.ir/user/login?url=/user/pass/update by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 28 Mar 2020 17:18:35 GMT -->
+</html>
